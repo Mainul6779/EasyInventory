@@ -1,0 +1,585 @@
+
+nav {
+  padding: 20px;
+}
+
+
+
+/* Global reset and raw CSS for padding and responsiveness */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Stock */
+
+.stockMargin{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.cardWidth{
+  width:fit-content;
+  padding: 10px;
+}
+
+.MarginTops{
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.insideFOrumt{
+  margin: 40px;
+}
+
+.paddingtothetop{
+  padding-top: 30px;
+  text-decoration: underline;
+  text-align: center;
+  color: #2c3e50; /* Deep blue for elegance */
+  background: linear-gradient(to right, #16a085, #f4d03f); /* Gradient effect */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Apply gradient to text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.addForm form {
+  padding: 20px; /* Padding inside the form */
+}
+
+.addForm input,
+button,
+label {
+  padding: 10px;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+}
+
+.addForm label {
+  font-weight: bold;
+}
+
+.addForm button {
+  cursor: pointer;
+}
+
+.addForm section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px; /* Padding around the entire section */
+  min-height: 100vh; /* Full height for responsiveness */
+  background: linear-gradient(to right, #6c63ff, #b993d6); /* Gradient background */
+}
+
+
+
+@media (max-width: 768px) {
+  .addForm section {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .insideFOrumt{
+    margin: 10px;
+  }
+
+  .addForm form {
+    padding: 10px;
+  }
+  
+}
+
+
+
+
+/* Login */
+
+.LoginDesign form {
+  padding: 20px; /* Padding inside the form */
+}
+
+.insideLoginForm{
+  padding-top: 30px;
+}
+
+.LoginDesign input,
+button,
+label {
+  padding: 10px;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+}
+
+.LoginDesign label {
+  font-weight: bold;
+}
+
+.LoginDesign button {
+  cursor: pointer;
+}
+
+.LoginGoogleButton{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+
+
+
+/* SignUp */
+
+.SignUpDesign form {
+  padding: 20px; /* Padding inside the form */
+}
+
+.insideSignUpForm{
+  padding-top: 30px;
+}
+
+.SignUpDesign input,
+button,
+label {
+  padding: 10px;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+}
+
+.SignUpDesign label {
+  font-weight: bold;
+}
+
+.SignUpDesign button {
+  cursor: pointer;
+}
+
+.SignUpGoogleButton{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+
+
+
+/* Sales */
+
+.Salesdesign form {
+  padding: 20px; /* Padding inside the form */
+}
+
+.insideSalesForm{
+  padding-top: 30px;
+  text-decoration: underline;
+  text-align: center;
+  color: #2c3e50; /* Deep blue for elegance */
+  background: linear-gradient(to right, #16a085, #f4d03f); /* Gradient effect */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Apply gradient to text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.Salesdesign input,
+button,
+label {
+  padding: 10px;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+}
+
+.Salesdesign label {
+  font-weight: bold;
+}
+
+.Salesdesign button {
+  cursor: pointer;
+}
+
+.Salesdesign section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px; /* Padding around the entire section */
+  min-height: 100vh; /* Full height for responsiveness */
+  background: linear-gradient(to right, #6c63ff, #b993d6); /* Gradient background */
+}
+
+
+
+@media (max-width: 768px) {
+  .Salesdesign section {
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .insideSalesForm{
+    margin: 10px;
+  }
+
+  .Salesdesign form {
+    padding: 10px;
+  }
+  
+}
+
+
+
+/* Report */
+/* Result  */
+
+.resultpadding{
+  padding: 40px;
+  margin-top: 20px;
+}
+
+.resultMargin{
+  margin-top: 20px;
+}
+
+
+
+.downloadbtns {
+  display: inline-flex;
+  align-items: center;
+  width:max-content;
+  gap: 8px;
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient blue */
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.downloadbtns:hover {
+  background: linear-gradient(135deg, #0056b3, #003d80); /* Darker shade on hover */
+  transform: scale(1.05); /* Slight scale effect */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.downloadbtns:active {
+  transform: scale(0.98); /* Click effect */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.downloadbtns span {
+  font-size: 18px;
+}
+
+
+
+.historyreport table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historyreport thead {
+  background: linear-gradient(to right, #22c55e, #2563eb);
+  color: white;
+}
+
+.historyreport th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.historyreport tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.3s ease;
+}
+
+.historyreport tbody tr:hover {
+  background: #f3f4f6;
+}
+
+.historyreport td {
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #374151;
+}
+
+.historyreport td:last-child {
+  font-weight: 600;
+  color: #16a34a;
+}
+
+
+
+
+/* Stocks */
+
+.stockDesign { 
+  font-size: 30px; /* Slightly larger for emphasis */
+  font-weight: 800; /* Stronger presence */
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff; /* Bright white for better contrast */
+  letter-spacing: 2px;
+
+  /* Updated Gradient for better visibility */
+  background: linear-gradient(90deg, #ff7eb3, #ff758c); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Glowing effect to make text pop */
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 
+               0px 0px 10px rgba(255, 117, 140, 0.8);
+
+  margin-bottom: 20px;
+  padding: 10px 20px; /* Adds a bit of spacing */
+  border-radius: 10px; /* Softens the edges */
+
+  /* Optional: Background Blur for better separation */
+  backdrop-filter: blur(5px);
+
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Title Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.search-bar {
+  width: max-content;
+  padding: 12px 15px;
+  margin: 15px 0;
+  border: 2px solid #4CAF50; /* Green border for a fresh look */
+  border-radius: 8px; /* Rounded corners for smooth design */
+  font-size: 18px; /* Slightly larger text */
+  font-weight: bold; /* Make the text pop */
+  background-color: #f9f9f9; /* Light background for contrast */
+  color: #2c3e50; /* Dark gray text for readability */
+  text-transform: uppercase; /* Make it more prominent */
+  letter-spacing: 1px; /* Space out letters for style */
+  transition: all 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Hover Effect */
+.search-bar:focus, 
+.search-bar:hover {
+  border-color: #16a085; /* Deep teal for active focus */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  background-color: #fff; /* White background on focus */
+  transform: scale(1.02); /* Slightly enlarge on focus */
+}
+
+
+/* Global Styles */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #2193b0, #6dd5ed);
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.loading, .error {
+  color: white;
+  font-size: 1.2rem;
+}
+
+
+/* Grid Layout - Four Cards Per Row */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusts dynamically */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card Styling */
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: left;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Image on the Left */
+.card img {
+  width: 120px; /* Fixed width */
+  height: 120px; /* Fixed height */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px; /* Spacing between image & text */
+}
+
+/* Card Content */
+.info {
+  flex: 1;
+}
+
+.info h3 {
+  color: #333;
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info p {
+  color: #555;
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+  }
+  
+  .card {
+    flex-direction: column; /* Stack image & content on smaller screens */
+    text-align: center;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 10px 0; /* Space below the image */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 card per row on small screens */
+  }
+}
+
+
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Modal Box */
+.modal {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%; /* Adjust for smaller screens */
+  max-width: 400px;
+  max-height: 80vh; /* Limit modal height */
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Make content scrollable if too long */
+}
+
+/* Input Fields */
+.modal input {
+  width: calc(100% - 16px);
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.editItem {
+  font-size: 24px; /* Increase font size */
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+  color: #2c3e50; /* Deep blue for elegance */
+  background: linear-gradient(to right, #16a085, #f4d03f); /* Gradient effect */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Apply gradient to text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  padding: 10px 0;
+}
+
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.update,
+.delete,
+.close {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.update {
+  background: #28a745;
+}
+
+.delete {
+  background: #dc3545;
+}
+
+.close {
+  background: #6c757d;
+}
