@@ -16,7 +16,6 @@ const Navbar = () => {
     { path: "/sales", name: "SALES" },
     { path: "/stock", name: "STOCK" },
     { path: "/report", name: "REPORT" },
-    { path: "/login", name: "Login" },
   ];
 
   const handleLogOut = () => {
@@ -48,7 +47,7 @@ const Navbar = () => {
           className={`md:flex md:items-center md:gap-8 absolute md:static top-16 left-0 w-full md:w-auto 
           transition-all duration-500 ease-in-out ${
             isOpen
-              ? "block bg-gradient-to-r from-[#2973B2] via-[#3498db] to-[#5DADE2]"
+              ? "block bg-gradient-to-r from-[#2973B2] via-[#3498db] to-[#5DADE2] p-4"
               : "hidden"
           } md:bg-transparent`}
         >
@@ -67,6 +66,37 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+
+          {/* User Info & Login/Logout Button */}
+          <li className="mt-4 md:mt-0 md:ml-4 flex items-center gap-4">
+            {user && (
+              <div className="relative group">
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-white"
+                  src={user.photoURL}
+                  alt="Profile"
+                />
+                <span className="absolute top-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {user.displayName}
+                </span>
+              </div>
+            )}
+
+            {user ? (
+              <button
+                onClick={handleLogOut}
+                className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition LogOutButtons"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="bg-white text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition LoginButtons">
+                  Login
+                </button>
+              </Link>
+            )}
+          </li>
         </ul>
       </div>
     </nav>

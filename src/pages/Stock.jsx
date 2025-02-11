@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Stock = () => {
+    const { user } = useContext(AuthContext);
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -16,7 +18,7 @@ const Stock = () => {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/inventory");
+        const response = await fetch(`https://easyinventorys.vercel.app/inventory?email=${user.email}`);
         if (!response.ok) throw new Error("Failed to fetch stock data");
         const data = await response.json();
         setItems(data);
@@ -28,7 +30,7 @@ const Stock = () => {
       }
     };
     fetchStockData();
-  }, []);
+  }, [user?.email]);
 
   // Open modal with item details
   const openModal = (item) => {
@@ -61,7 +63,7 @@ const Stock = () => {
             taxes: selectedItem.taxes,
           };
 
-          const response = await fetch(`http://localhost:5000/inventory/${selectedItem._id}`, {
+          const response = await fetch(`https://easyinventorys.vercel.app/inventory/${selectedItem._id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedItem),
@@ -97,7 +99,7 @@ const Stock = () => {
       confirmButtonText: "Yes, Delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await fetch(`http://localhost:5000/inventory/${id}`, {
+        await fetch(`https://easyinventorys.vercel.app/inventory/${id}`, {
           method: "DELETE",
         });
 

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaUpload } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider"; // Import Auth Context
 
 const Add = () => {
+  const { user } = useContext(AuthContext); // Get Logged-in User
   const [itemId, setItemId] = useState("");
   const [itemName, setItemName] = useState("");
   const [brandName, setBrandName] = useState("");
@@ -15,33 +17,42 @@ const Add = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     // Calculate Rate (including Taxes)
-  const RateWithTax = parseFloat(calculateTotalRate(rate, taxes)).toFixed(2);
+    const RateWithTax = parseFloat(calculateTotalRate(rate, taxes)).toFixed(2);
 
-    const itemData = { itemId, itemName, brandName, quantity, rate, mrp, taxes, RateWithTax };
-  
+    // Include User Email
+    const itemData = {
+      itemId,
+      itemName,
+      brandName,
+      quantity,
+      rate,
+      mrp,
+      taxes,
+      RateWithTax,
+      userEmail: user.email,
+    };
+
     try {
       console.log("Sending data:", itemData);
-  
-      const response = await fetch("http://localhost:5000/inventory", {
+
+      const response = await fetch("https://easyinventorys.vercel.app/inventory", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(itemData),
       });
-  
+
       const responseData = await response.json();
       console.log("API Response:", responseData);
-  
+
       if (response.ok) {
         Swal.fire({
           title: "✅ Success!",
           text: "Item has been added successfully.",
           icon: "success",
-          showConfirmButton: false,  // ❌ Hide the OK button
-          timer: 2000,  // ⏳ Auto close after 2 seconds
+          timer: 2000,
         });
-  
-        // Clear form fields
+
+        // Clear form
         setItemId("");
         setItemName("");
         setBrandName("");
@@ -55,25 +66,22 @@ const Add = () => {
           title: "❌ Error!",
           text: responseData.message || "Failed to add item.",
           icon: "error",
-          confirmButtonColor: "#E53E3E",
         });
       }
     } catch (error) {
       console.error("Error:", error);
-  
       Swal.fire({
         title: "❌ Error!",
-        text: "Something went wrong. Please try again.",
+        text: "Something went wrong.",
         icon: "error",
-        confirmButtonColor: "#E53E3E",
       });
     }
   };
-  
+
   // Function to calculate Rate including Taxes
-const calculateTotalRate = (rate, taxes) => {
-  return parseFloat(rate) + parseFloat(taxes || 0);
-};
+  const calculateTotalRate = (rate, taxes) => {
+    return parseFloat(rate) + parseFloat(taxes || 0);
+  };
 
   const handleImageUpload = (e) => {
     setImage(e.target.files[0]);
@@ -87,7 +95,10 @@ const calculateTotalRate = (rate, taxes) => {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-8">
           <div>
-            <label htmlFor="itemId" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="itemId"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Item ID
             </label>
             <input
@@ -101,7 +112,10 @@ const calculateTotalRate = (rate, taxes) => {
             />
           </div>
           <div>
-            <label htmlFor="itemName" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="itemName"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Item Name
             </label>
             <input
@@ -115,7 +129,10 @@ const calculateTotalRate = (rate, taxes) => {
             />
           </div>
           <div>
-            <label htmlFor="itemName" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="itemName"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Brand Name
             </label>
             <input
@@ -129,7 +146,10 @@ const calculateTotalRate = (rate, taxes) => {
             />
           </div>
           <div>
-            <label htmlFor="quantity" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="quantity"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Quantity
             </label>
             <input
@@ -143,7 +163,10 @@ const calculateTotalRate = (rate, taxes) => {
             />
           </div>
           <div>
-            <label htmlFor="rate" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="rate"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Rate (Cost Price)
             </label>
             <input
@@ -158,7 +181,10 @@ const calculateTotalRate = (rate, taxes) => {
             />
           </div>
           <div>
-            <label htmlFor="mrp" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="mrp"
+              className="block font-medium text-gray-700 mb-3"
+            >
               MRP (Selling Price)
             </label>
             <input
@@ -173,7 +199,10 @@ const calculateTotalRate = (rate, taxes) => {
             />
           </div>
           <div>
-            <label htmlFor="taxes" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="taxes"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Taxes (in %)
             </label>
             <input
@@ -190,7 +219,10 @@ const calculateTotalRate = (rate, taxes) => {
             </p>
           </div>
           <div>
-            <label htmlFor="image" className="block font-medium text-gray-700 mb-3">
+            <label
+              htmlFor="image"
+              className="block font-medium text-gray-700 mb-3"
+            >
               Image
             </label>
             <div className="flex items-center space-x-3">

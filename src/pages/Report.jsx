@@ -1,7 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Report = () => {
+      const { user } = useContext(AuthContext);
   const [salesData, setSalesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [month, setMonth] = useState("");
@@ -14,7 +16,7 @@ const Report = () => {
 
   useEffect(() => {
     // Fetch sales data from API
-    fetch("http://localhost:5000/sales")
+    fetch( `https://easyinventorys.vercel.app/sales?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setSalesData(data);
@@ -22,7 +24,7 @@ const Report = () => {
         calculateReport(data);
       })
       .catch((err) => console.error("Error fetching sales data:", err));
-  }, []);
+  }, [user?.email]);
 
   useEffect(() => {
     if (month && year) {
@@ -42,47 +44,99 @@ const Report = () => {
     }
   }, [month, year, salesData]);
 
+  // const calculateReport = (data) => {
+  //   const uniqueDates = [
+  //     ...new Set(data.map((item) => new Date(item.soldAt).toDateString())),
+  //   ];
+
+  //   const totalSales = data.reduce(
+  //     (sum, item) => sum + item.soldPrice,
+  //     0
+  //   );
+
+  //   const totalProfit = data.reduce(
+  //     (sum, item) => sum + (item.soldPrice - (item.rateWithTax * item.quantitySold)),
+  //     0
+  //   );
+
+  //   const dailySales = uniqueDates.map((date) => {
+  //     const dailyData = data.filter(
+  //       (item) => new Date(item.soldAt).toDateString() === date
+  //     );
+
+  //     const sales = dailyData.reduce(
+  //       (sum, item) => sum + item.soldPrice,
+  //       0
+  //     );
+
+  //     const profit = dailyData.reduce(
+  //       (sum, item) =>
+  //         sum + (item.soldPrice - (item.rateWithTax * item.quantitySold)),
+  //       0
+  //     );
+
+  //     return { date, sales, profit };
+  //   });
+
+  //   setRunningAverageSale(
+  //     uniqueDates.length > 0 ? (totalSales / uniqueDates.length).toFixed(2) : 0
+  //   );
+  //   setMonthlySales(totalSales.toFixed(2));
+  //   setMonthlyProfit(totalProfit.toFixed(2));
+  //   setDailyReport(dailySales);
+  // };
+
   const calculateReport = (data) => {
+    if (!data || data.length === 0) {
+      setRunningAverageSale(0);
+      setMonthlySales(0);
+      setMonthlyProfit(0);
+      setDailyReport([]);
+      return;
+    }
+  
     const uniqueDates = [
       ...new Set(data.map((item) => new Date(item.soldAt).toDateString())),
     ];
-
+  
     const totalSales = data.reduce(
-      (sum, item) => sum + item.soldPrice,
+      (sum, item) => sum + (Number(item.soldPrice) || 0),
       0
     );
-
+  
     const totalProfit = data.reduce(
-      (sum, item) => sum + (item.soldPrice - (item.rateWithTax * item.quantitySold)),
+      (sum, item) =>
+        sum + ((Number(item.soldPrice) || 0) - (Number(item.rateWithTax) * Number(item.quantitySold) || 0)),
       0
     );
-
+  
     const dailySales = uniqueDates.map((date) => {
       const dailyData = data.filter(
         (item) => new Date(item.soldAt).toDateString() === date
       );
-
+  
       const sales = dailyData.reduce(
-        (sum, item) => sum + item.soldPrice,
+        (sum, item) => sum + (Number(item.soldPrice) || 0),
         0
       );
-
+  
       const profit = dailyData.reduce(
         (sum, item) =>
-          sum + (item.soldPrice - (item.rateWithTax * item.quantitySold)),
+          sum + ((Number(item.soldPrice) || 0) - (Number(item.rateWithTax) * Number(item.quantitySold) || 0)),
         0
       );
-
+  
       return { date, sales, profit };
     });
-
+  
     setRunningAverageSale(
-      uniqueDates.length > 0 ? (totalSales / uniqueDates.length).toFixed(2) : 0
+      uniqueDates.length > 0 ? (totalSales / uniqueDates.length).toFixed(2) : "0.00"
     );
     setMonthlySales(totalSales.toFixed(2));
     setMonthlyProfit(totalProfit.toFixed(2));
     setDailyReport(dailySales);
   };
+  
 
   const downloadCSV = () => {
     if (filteredData.length === 0) {

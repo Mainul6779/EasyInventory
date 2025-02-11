@@ -34,7 +34,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-purple-600 to-blue-600 px-4 SignUpDesign">
+    <div className="flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-600 px-4 SignUpDesign">
       <div className="w-full max-w-md p-8 bg-white/10 backdrop-blur-lg rounded-lg shadow-lg border border-white/20 text-white">
         <h3 className="text-3xl font-bold text-center mb-6 insideSignUpForm">Create Your Account</h3>
 

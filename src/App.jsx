@@ -7,11 +7,16 @@ import Stock from "./pages/Stock";
 import Report from "./pages/Report";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import PrivateRoute from "./providers/PrivateRoute";
+import { ToastContainer } from "react-toastify";
 
 const App = createBrowserRouter([
   {
       path: "/",
-      element: <Home/>,
+      element: <>
+       <ToastContainer autoClose={500} />
+       <Home/>
+      </> ,
       children: [
           {
               path: '/',
@@ -19,15 +24,15 @@ const App = createBrowserRouter([
           },
           {
               path: '/additem',
-              element: <Add/>
+              element: ( <PrivateRoute> <Add/> </PrivateRoute> )
           },
           {
               path: '/sales',
-              element: <Sales/>
+              element: ( <PrivateRoute>   <Sales/>   </PrivateRoute>)
           },
           {
               path: '/stock',
-              element: <Stock/>
+              element:( <PrivateRoute> <Stock/>  </PrivateRoute> )
           },
           {
               path: '/report',
